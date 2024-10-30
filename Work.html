@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work</title>
+    <style>
+        /* Theme Variables */
+        :root {
+            --bg-color: #f4f4f9;
+            --text-color: #333;
+            --header-bg: #ffffff;
+            --primary-color: #0056b3;
+            --secondary-color: #003a80;
+            --highlight-color: rgba(0, 0, 0, 0.1);
+            --icon-bg: #ffffff;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #1c1c1c;
+            --text-color: #e0e0e0;
+            --header-bg: #2a2a2a;
+            --primary-color: #3399ff;
+            --secondary-color: #1a73e8;
+            --highlight-color: rgba(255, 255, 255, 0.1);
+            --icon-bg: #333333;
+        }
+
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--header-bg);
+            color: var(--text-color);
+            padding: 1em 2em;
+            box-shadow: 0 4px 12px var(--highlight-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 15px;
+            list-style: none;
+        }
+
+        nav ul li a img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        nav ul li.active a img {
+            border: 2px solid var(--primary-color);
+            transform: scale(1.2);
+            box-shadow: 0 6px 12px var(--highlight-color);
+        }
+
+        nav ul li a img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px var(--highlight-color);
+        }
+
+        /* Main Layout */
+        main {
+            display: flex;
+            gap: 2em;
+            padding: 3em 2em;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            align-items: flex-start;
+        }
+
+        /* Sidebar */
+        aside {
+            background-color: var(--header-bg);
+            color: var(--text-color);
+            flex: 1;
+            max-width: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px var(--highlight-color);
+        }
+
+        .profilePic {
+            border-radius: 50%;
+            width: 150px;
+            box-shadow: 0 4px 8px var(--highlight-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .profilePic:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px var (--highlight-color);
+        }
+
+        .myName, .myOccupation {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        /* Social Media & Contact Info */
+        .socialM, .contactInfo {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .sM a img {
+            width: 40px;
+            height: 40px;
+            background-color: var(--icon-bg);
+            padding: 8px;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px var(--highlight-color);
+            transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .sM a img:hover {
+            transform: scale(1.15);
+            box-shadow: 0 6px 12px var(--highlight-color);
+        }
+
+        /* Download Resume Button */
+        .contactInfo .download-btn {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 1em;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .contactInfo .download-btn:hover {
+            background-color: var(--secondary-color);
+            transform: scale(1.05);
+        }
+
+        /* Article Section */
+        article {
+            background-color: var(--header-bg);
+            color: var(--text-color);
+            flex: 2;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px var(--highlight-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .title {
+            font-size: 2.5em;
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-bottom: 0.5em;
+        }
+
+        /* Tag Container Styling */
+        .tag-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .tags {
+            display: flex;
+            gap: 10px;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .tag2 {
+            padding: 8px 16px;
+            background-color: var(--header-bg);
+            color: var(--text-color);
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.95em;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 8px var(--highlight-color);
+        }
+
+        .tag2:hover {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px var(--highlight-color);
+        }
+
+        .tag2.active {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px var(--highlight-color);
+        }
+
+        /* Portfolio Grid */
+        .allColumns {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .portfolio-item {
+            background-color: var(--header-bg);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px var(--highlight-color);
+            width: 100%;
+            max-width: 300px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio-item img:hover {
+            transform: scale(1.05);
+        }
+
+        .portfolio-item h3 {
+            font-size: 1.2em;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .portfolio-item p {
+            font-size: 0.95em;
+            color: var(--text-color);
+            margin-bottom: 15px;
+        }
+
+        /* Responsive Design */
+        @media only screen and (max-width: 1024px) {
+            main {
+                flex-direction: column;
+                align-items: center;
+            }
+            aside, article {
+                width: 100%;
+            }
+
+            .allColumns {
+                flex-direction: column;
+            }
+        }
+
+        /* Dark Mode Toggle Button */
+        #theme-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 15px;
+            background-color: var(--primary-color);
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        #theme-toggle:hover {
+            background-color: var(--secondary-color);
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--header-bg);
+            color: var(--text-color);
+            text-align: center;
+            padding: 1.5em 0;
+            box-shadow: 0 -4px 10px var(--highlight-color);
+            font-size: 0.9em;
+            margin-top: 2em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="heading">
+            <img class="headLogo" src="images/Logo.png" alt="Site logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="Landing.html"><img src="images/HomeCard.png" alt="Home"></a></li>
+                <li><a href="Resume.html"><img src="images/ResumeCard.png" alt="Resume"></a></li>
+                <li><a href="Work.html"><img src="images/WorkCard.png" alt="Work"></a></li>
+                <li><a href="Contact.html"><img src="images/ContactCard.png" alt="Contact"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <aside>
+            <img src="images/ProfilePic.jpeg" alt="My Picture" class="profilePic">
+            <h1 class="myName">Ezekiel Ignatius</h1>
+            <p class="myOccupation">Web Developer</p>
+            <div class="socialM">
+                <div class="sM"><a href="https://facebook.com"><img src="images/Facebook.png" alt="Facebook"></a></div>
+                <div class="sM"><a href="https://linkedin.com"><img src="images/Linkedin.png" alt="LinkedIn"></a></div>
+                <div class="sM"><a href="https://twitter.com"><img src="images/Twitter.png" alt="Twitter"></a></div>
+                <div class="sM"><a href="https://github.com"><img src="images/Github.png" alt="GitHub"></a></div>
+            </div>
+            <div class="contactInfo">
+                <a href="path/to/your-resume.pdf" download="Ezekiel_Ignatius_Resume.pdf" class="download-btn">
+                    Download Resume
+                </a>
+            </div>
+        </aside>
+        <article>
+            <h1 class="title">Portfolio</h1>
+            <div class="tag-container">
+                <ul class="tags">
+                    <li class="tag2 active" data-category="all">All</li>
+                    <li class="tag2" data-category="app-development">App Development</li>
+                    <li class="tag2" data-category="web-development">Web Development</li>
+                    <li class="tag2" data-category="blog">Blog</li>
+                    <li class="tag2" data-category="tutorial">Tutorial Services</li>
+                </ul>
+            </div>
+
+            <div class="allColumns">
+                <div class="portfolio-item" data-category="web-development">
+                    <a href="https://example-rental-website.com" target="_blank">
+                        <img src="images/UX Card.png" alt="Rental Website Project">
+                    </a>
+                    <h3>Rental Website Project</h3>
+                    <p>A platform for users to browse and rent properties online.</p>
+                </div>
+                <div class="portfolio-item" data-category="app-development">
+                    <a href="https://example-smartbank-app-download.com" target="_blank">
+                        <img src="images/App Development Card.png" alt="Smart Bank App Project">
+                    </a>
+                    <h3>Smart Bank App</h3>
+                    <p>A mobile app providing a seamless banking experience on the go.</p>
+                </div>
+                <div class="portfolio-item" data-category="blog">
+                    <a href="https://ezekielignatius47.wixsite.com/ezekiel" target="_blank">
+                        <img src="images/MyBlog.png" alt="Blog Projects">
+                    </a>
+                    <h3>Blog Project</h3>
+                    <p>A minimalist, modern blog website showcasing my journey as a developer.</p>
+                </div>
+                <div class="portfolio-item" data-category="tutorial">
+                    <a href="https://example-tutorial-services.com" target="_blank">
+                        <img src="images/Mentorship Card.png" alt="Tutorial Services">
+                    </a>
+                    <h3>Tutorial Services</h3>
+                    <p>Personalized tutorials to help aspiring developers grow.</p>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <p>© 2023 Ezekiel Ignatius | Web Developer | <a href="mailto:ezekielignatius47@gmail.com">ezekielignatius47@gmail.com</a></p>
+    </footer>
+
+    <button id="theme-toggle">Toggle Dark Mode</button>
+
+    <script>
+        // Portfolio Filtering with Active Tag Styling
+        function filterPortfolio(category) {
+            const items = document.querySelectorAll('.portfolio-item');
+            const tags = document.querySelectorAll('.tags .tag2');
+
+            items.forEach(item => {
+                item.style.display = (category === 'all' || item.dataset.category === category) ? 'block' : 'none';
+            });
+
+            tags.forEach(tag => {
+                tag.classList.toggle('active', tag.dataset.category === category);
+            });
+        }
+
+        // Set up filter click events with active state management
+        document.querySelectorAll('.tags .tag2').forEach(tag => {
+            tag.addEventListener('click', function() {
+                const category = this.dataset.category;
+                filterPortfolio(category);
+            });
+        });
+    </script>
+    <!-- Link to the external JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>

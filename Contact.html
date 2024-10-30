@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <style>
+        /* Theme Variables */
+        :root {
+            --bg-color: #f4f4f9;
+            --text-color: #333;
+            --header-bg: #ffffff;
+            --primary-color: #0056b3;
+            --secondary-color: #003a80;
+            --highlight-color: rgba(0, 0, 0, 0.1);
+            --icon-bg: #ffffff;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #1c1c1c;
+            --text-color: #e0e0e0;
+            --header-bg: #2a2a2a;
+            --primary-color: #3399ff;
+            --secondary-color: #1a73e8;
+            --highlight-color: rgba(255, 255, 255, 0.1);
+            --icon-bg: #333333;
+        }
+
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--header-bg);
+            color: var(--text-color);
+            padding: 1em 2em;
+            box-shadow: 0 4px 12px var(--highlight-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 15px;
+            list-style: none;
+        }
+
+        nav ul li a img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        nav ul li.active a img {
+            border: 2px solid var(--primary-color);
+            transform: scale(1.2);
+            box-shadow: 0 6px 12px var(--highlight-color);
+        }
+
+        nav ul li a img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px var(--highlight-color);
+        }
+
+        /* Main Layout */
+        main {
+            display: flex;
+            gap: 2em;
+            padding: 3em 2em;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            align-items: flex-start;
+        }
+
+        /* Sidebar */
+        aside {
+            background-color: var(--header-bg);
+            color: var(--text-color);
+            flex: 1;
+            max-width: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px var(--highlight-color);
+        }
+
+        .profilePic {
+            border-radius: 50%;
+            width: 150px;
+            box-shadow: 0 4px 8px var(--highlight-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .profilePic:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px var(--highlight-color);
+        }
+
+        .myName, .myOccupation {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .socialM {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .sM a img {
+            width: 40px;
+            background-color: var(--icon-bg);
+            padding: 8px;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px var(--highlight-color);
+            transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .sM a img:hover {
+            transform: scale(1.15);
+            box-shadow: 0 6px 12px var(--highlight-color);
+        }
+
+        /* Contact Information */
+        .columns {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+
+        .columns .phone, .columns .email {
+            background-color: var(--header-bg);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 8px var(--highlight-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 48%;
+        }
+
+        .columns .phone:hover, .columns .email:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px var(--highlight-color);
+        }
+
+        .description {
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-top: 8px;
+        }
+
+        /* Contact Columns */
+.contact-columns {
+    display: flex;
+    gap: 2em;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    background-color: var(--header-bg);
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px var(--highlight-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex: 1;
+    max-width: 48%;
+}
+
+.contact-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px var(--highlight-color);
+}
+
+.contact-icon {
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+    transition: transform 0.3s ease;
+}
+
+.contact-item:hover .contact-icon {
+    transform: scale(1.1);
+}
+
+.contact-info h3 {
+    font-size: 1.1em;
+    color: var(--primary-color);
+    margin-bottom: 4px;
+}
+
+.contact-description {
+    font-size: 1em;
+    color: var(--text-color);
+    margin: 0;
+}
+
+
+        /* Form Styling */
+        .form-container {
+            background-color: var(--header-bg);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px var(--highlight-color);
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .form-label {
+            font-size: 1em;
+            color: var(--text-color);
+            display: block;
+            margin-top: 15px;
+        }
+
+        .form-input {
+            width: 100%;
+            height: 40px;
+            border: 1px solid var(--highlight-color);
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 5px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: border-color 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .submit {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 10px 25px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Responsive Design */
+        @media only screen and (max-width: 768px) {
+            .columns {
+                flex-direction: column;
+            }
+
+            .columns .phone, .columns .email {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+
+        /* Dark Mode Toggle Button */
+        #theme-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 15px;
+            background-color: var(--primary-color);
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        #theme-toggle:hover {
+            background-color: var(--secondary-color);
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--header-bg);
+            color: var(--text-color);
+            text-align: center;
+            padding: 1.5em 0;
+            box-shadow: 0 -4px 10px var(--highlight-color);
+            font-size: 0.9em;
+            margin-top: 2em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="heading">
+            <img class="headLogo" src="images/Logo.png" alt="Site logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="Landing.html"><img src="images/HomeCard.png" alt="Home"></a></li>
+                <li><a href="Resume.html"><img src="images/ResumeCard.png" alt="Resume"></a></li>
+                <li><a href="Work.html"><img src="images/WorkCard.png" alt="Work"></a></li>
+                <li><a href="Contact.html"><img src="images/ContactCard.png" alt="Contact"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <aside>
+            <img src="images/ProfilePic.jpeg" alt="My Picture" class="profilePic">
+            <h1 class="myName">Ezekiel Ignatius</h1>
+            <p class="myOccupation">Web Developer</p>
+            <div class="socialM">
+                <div class="sM"><a href="https://facebook.com"><img src="images/Facebook.png" alt="Facebook"></a></div>
+                <div class="sM"><a href="https://linkedin.com"><img src="images/Linkedin.png" alt="LinkedIn"></a></div>
+                <div class="sM"><a href="https://twitter.com"><img src="images/Twitter.png" alt="Twitter"></a></div>
+                <div class="sM"><a href="https://github.com"><img src="images/Github.png" alt="GitHub"></a></div>
+            </div>
+        </aside>
+        <article>
+            <h1 class="title">Contact</h1>
+            <section class="contact-columns">
+                <div class="contact-item phone">
+                    <img src="images/Phone.png" alt="Phone Icon" class="contact-icon">
+                    <div class="contact-info">
+                        <h3>Phone</h3>
+                        <p class="contact-description">+264 81 855 9037</p>
+                    </div>
+                </div>
+                <div class="contact-item email">
+                    <img src="images/Email.png" alt="Email Icon" class="contact-icon">
+                    <div class="contact-info">
+                        <h3>Email</h3>
+                        <p class="contact-description">ezekielignatius47@gmail.com</p>
+                    </div>
+                </div>
+            </section>
+            
+            <div class="form-container">
+                <p>I am always open to discussing new projects, opportunities in tech, partnerships, and mentorship.</p>
+                <form name="contactForm" action="/submit-form" method="POST" onsubmit="return validateForm()">
+                    <label class="form-label">Name</label>
+                    <input class="form-input" type="text" name="first_name" placeholder="Your Name">
+                    
+                    <label class="form-label">Email</label>
+                    <input class="form-input" type="email" name="email" placeholder="Your Email">
+                    
+                    <label class="form-label">Message</label>
+                    <textarea class="form-input" name="message" rows="4" placeholder="Your Message"></textarea>
+                    
+                    <input class="submit" type="submit" value="Submit">
+                </form>
+            </div>
+        </article>
+    </main>
+    <footer>
+        <p>© 2023 Ezekiel Ignatius | Web Developer | <a href="mailto:ezekielignatius47@gmail.com">ezekielignatius47@gmail.com</a></p>
+    </footer>
+    <button id="theme-toggle">Toggle Dark Mode</button>
+    </script>
+    <!-- Link to the external JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>
